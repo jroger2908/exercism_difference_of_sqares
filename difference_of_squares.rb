@@ -1,23 +1,16 @@
 class Squares
   VERSION = 2
+  attr_reader :number
   def initialize(number)
-    @number = number
+    @number = 0.upto(number)
   end
 
   def sum_of_squares
-    total = 0
-    for i in 1..@number
-      total += (i**2)
-    end
-    total
+    @sum_of_squares ||= @number.inject{|sum, num| sum += num**2}
   end
 
   def square_of_sum
-    sum_natural_nums = 0
-    for i in 1..@number
-      sum_natural_nums += i
-    end
-    sum_natural_nums ** 2  
+    @square_of_sum ||= @number.inject(:+)**2
   end
 
   def difference
